@@ -7,3 +7,30 @@
 .wall {
   background: #333;
 }
+
+.agent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+}
+
+.box {
+  background: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.goal {
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}

@@ -8,21 +8,36 @@ export async function getStaticMap(): Promise<World> {
   return await fetch(`${url}/simulation/map`).then((x) => x.json());
 }
 
-// export interface Location {
-//   x: number;
-//   y: number;
-// }
+export interface Location {
+  x: number;
+  y: number;
+}
 
 // export enum GridType {
 //   EMPTY = " ",
 //   WALL = "#",
 // }
 
+export interface Agent {
+  location: Location;
+  callsign: number;
+}
+
+export interface Box {
+  location: Location;
+  type: number;
+}
+
+export interface Goal {
+  location: Location;
+  type: number;
+}
+
 export interface World {
   grid: string;
-    world: {
-      agent: any[];
-      box: any[];
-      goal: any[];
-    };
+  world: {
+    agent: Agent[];
+    box: Box[];
+    goal: Goal[];
+  };
 }
