@@ -33,11 +33,13 @@ export interface Goal {
   type: number;
 }
 
+export interface WorldState {
+  agents: Agent[];
+  boxes: Box[];
+  goals: Goal[];
+}
+
 export interface World {
   grid: string;
-  world: {
-    agent: Agent[];
-    box: Box[];
-    goal: Goal[];
-  };
+  state: WorldState;
 }
