@@ -20,7 +20,7 @@ const WorldView = () => {
         setState(data);
       });
     });
-  }, [state]);
+  }, []);
 
   if (!world || !state) {
     return null;
