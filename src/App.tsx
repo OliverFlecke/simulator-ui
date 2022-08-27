@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from "react";
-import World from "./world/WorldView";
-import "./App.css";
-import { startSimulation } from "./api";
+import { useState } from "react"
+import "./App.css"
+import ControlPanel from "./ControlPanel"
+import World from "./world/WorldView"
 
 function App() {
-  const [sim, setSim] = useState<string>();
+	const [simulation, setSimulation] = useState<string>()
 
-  useEffect(() => {
-    startSimulation().then(setSim);
-  }, []);
-
-  if (!sim) {
-    return <div>No simulation has been started yet</div>;
-  }
-
-  console.log(`Got simulation id: ${sim}`);
-
-  return <World simulation={sim} />;
+	return (
+		<>
+			<ControlPanel
+				simulationId={simulation}
+				setSimulationId={setSimulation}
+			/>
+			{!!simulation && <World simulation={simulation} />}
+		</>
+	)
 }
 
-export default App;
+export default App
