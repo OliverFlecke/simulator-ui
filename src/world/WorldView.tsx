@@ -10,17 +10,16 @@ const WorldView: React.FC<{ simulation: string }> = ({ simulation }) => {
 	const [state, setState] = useState<WorldState | null>(null)
 
 	useEffect(() => {
-		getStaticMap(simulation).then((w) => {
+		getStaticMap(simulation).then(w => {
 			setWorld(w)
 			setState(w.state)
 
 			const source = getEventSource(simulation)
-			source.addEventListener("move", (e) => {
+			source.addEventListener("move", e => {
 				const data = JSON.parse(e.data) as WorldState
 				setState(data)
 			})
 			source.addEventListener("complete", () => {
-				console.log("Simulation completed")
 				source.close()
 			})
 		})
@@ -32,13 +31,13 @@ const WorldView: React.FC<{ simulation: string }> = ({ simulation }) => {
 
 	return (
 		<Grid grid={world.grid}>
-			{state.goals.map((g) => (
+			{state.goals.map(g => (
 				<GoalView key={`${g.type}+${g.location}`} goal={g} />
 			))}
-			{state.boxes.map((b) => (
+			{state.boxes.map(b => (
 				<BoxView key={`${b.type}+${b.location}`} box={b} />
 			))}
-			{state.agents.map((a) => (
+			{state.agents.map(a => (
 				<AgentView key={a.callsign} agent={a} />
 			))}
 		</Grid>
