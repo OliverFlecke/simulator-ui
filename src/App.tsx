@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import "./App.css"
 import ControlPanel from "./ControlPanel"
 import World from "./world/WorldView"
 

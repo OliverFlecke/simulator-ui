@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+	.center {
+		@apply flex justify-center items-center;
+	}
+}
+
+@layer components {
+	.cell {
+		@apply text-center w-full h-full;
+	}
+
+	.wall {
+		@apply bg-zinc-800;
+	}
+
+	.agent {
+		@apply center h-full;
+		@apply text-white text-lg font-bold;
+	}
+
+	.box {
+		@apply center rounded m-2;
+		@apply bg-blue-700;
+	}
+
+	.goal {
+		@apply center uppercase bg-red-700;
+	}
+}
