@@ -10,7 +10,7 @@ const GoalView: FC<{ goal: Goal }> = ({ goal }) => {
 				gridRow: goal.location.y + 1,
 			}}
 		>
-			{String.fromCharCode(goal.type)}
+			{goal.type}
 		</div>
 	)
 }

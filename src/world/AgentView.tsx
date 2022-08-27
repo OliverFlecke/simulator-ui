@@ -10,7 +10,7 @@ const AgentView: FC<{ agent: Agent }> = ({ agent }) => {
 				gridRow: agent.location.y + 1,
 			}}
 		>
-			{String.fromCharCode(agent.callsign)}
+			{agent.callsign}
 		</div>
 	)
 }
