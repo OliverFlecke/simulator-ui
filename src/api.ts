@@ -28,17 +28,17 @@ export interface Location {
 
 export interface Agent {
 	location: Location
-	callsign: number
+	callsign?: number
 }
 
 export interface Box {
 	location: Location
-	type: string
+	type?: string
 }
 
 export interface Goal {
 	location: Location
-	type: string
+	type?: string
 }
 
 export interface WorldState {
@@ -77,13 +77,13 @@ function getWorldState(content: string): WorldState {
 					break
 				case "box":
 					state.boxes.push({
-						type: m.groups["id"],
+						type: (m.groups["id"].charCodeAt(0) - 97).toString(),
 						location,
 					})
 					break
 				case "goal":
 					state.goals.push({
-						type: m.groups["id"],
+						type: (m.groups["id"].charCodeAt(0) - 97).toString(),
 						location,
 					})
 					break

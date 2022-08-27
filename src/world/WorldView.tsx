@@ -32,13 +32,13 @@ const WorldView: React.FC<{ simulation: string }> = ({ simulation }) => {
 	return (
 		<Grid grid={world.grid}>
 			{state.goals.map(g => (
-				<GoalView key={`${g.type}+${g.location}`} goal={g} />
+				<GoalView key={`goal+${g.type}+${g.location}`} goal={g} />
 			))}
 			{state.boxes.map(b => (
-				<BoxView key={`${b.type}+${b.location}`} box={b} />
+				<BoxView key={`box+${b.type}+${b.location}`} box={b} />
 			))}
 			{state.agents.map(a => (
-				<AgentView key={a.callsign} agent={a} />
+				<AgentView key={`agent+${a.callsign}`} agent={a} />
 			))}
 		</Grid>
 	)

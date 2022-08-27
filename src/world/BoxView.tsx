@@ -10,7 +10,7 @@ const BoxView: FC<{ box: Box }> = ({ box }) => {
 				gridRow: box.location.y + 1,
 			}}
 		>
-			{box.type}
+			{box.type ?? "0"}
 		</div>
 	)
 }
