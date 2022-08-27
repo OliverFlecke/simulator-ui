@@ -9,11 +9,7 @@ export const Grid: FC<{ grid: string; children?: React.ReactNode }> = ({
 	const l = rows[0].length
 
 	return (
-		<div
-			style={{
-				position: "relative",
-			}}
-		>
+		<div className="relative h-full">
 			<InternalGrid columns={l} rows={rows.length}>
 				{rows.flatMap((row, y) =>
 					row
@@ -35,12 +31,8 @@ const InternalGrid: FC<{
 }> = ({ children, columns, rows }) => {
 	return (
 		<div
+			className="absolute grid h-full w-full gap-1"
 			style={{
-				position: "absolute",
-				height: "100vh",
-				width: "100vw",
-				display: "grid",
-				gap: "2px",
 				gridTemplateColumns: `repeat(${columns}, 1fr)`,
 				gridTemplateRows: `repeat(${rows}, 1fr)`,
 			}}

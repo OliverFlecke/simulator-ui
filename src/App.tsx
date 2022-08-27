@@ -6,13 +6,13 @@ function App() {
 	const [simulation, setSimulation] = useState<string>()
 
 	return (
-		<>
+		<main className="flex h-screen flex-col">
 			<ControlPanel
 				simulationId={simulation}
 				setSimulationId={setSimulation}
 			/>
 			{!!simulation && <World simulation={simulation} />}
-		</>
+		</main>
 	)
 }
 

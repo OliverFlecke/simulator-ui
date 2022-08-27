@@ -22,7 +22,7 @@
 	}
 
 	.agent {
-		@apply m-4 center rounded-full bg-green-700;
+		@apply center m-1 rounded-full bg-green-700;
 		@apply text-lg font-bold text-white;
 	}
 
