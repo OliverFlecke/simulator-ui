@@ -5,22 +5,26 @@ import BoxView from "./BoxView";
 import GoalView from "./GoalView";
 import { Grid } from "./Grid";
 
-const WorldView = () => {
+const WorldView: React.FC<{ simulation: string }> = ({ simulation }) => {
   const [world, setWorld] = useState<World | null>(null);
   const [state, setState] = useState<WorldState | null>(null);
 
   useEffect(() => {
-    getStaticMap().then((w) => {
+    getStaticMap(simulation).then((w) => {
       setWorld(w);
       setState(w.state);
 
-      const source = getEventSource();
+      const source = getEventSource(simulation);
       source.addEventListener("move", (e) => {
         const data = JSON.parse(e.data) as WorldState;
         setState(data);
       });
+      source.addEventListener("complete", () => {
+        console.log("Simulation completed");
+        source.close();
+      });
     });
-  }, []);
+  }, [simulation]);
 
   if (!world || !state) {
     return null;
@@ -29,14 +33,14 @@ const WorldView = () => {
   return (
     <>
       <Grid grid={world.grid}>
-        {state.agents.map((a) => (
-          <AgentView key={a.callsign} agent={a} />
+        {state.goals.map((g) => (
+          <GoalView key={`${g.type}+${g.location}`} goal={g} />
         ))}
         {state.boxes.map((b) => (
           <BoxView key={`${b.type}+${b.location}`} box={b} />
         ))}
-        {state.goals.map((g) => (
-          <GoalView key={`${g.type}+${g.location}`} goal={g} />
+        {state.agents.map((a) => (
+          <AgentView key={a.callsign} agent={a} />
         ))}
       </Grid>
     </>
