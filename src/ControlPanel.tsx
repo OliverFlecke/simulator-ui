@@ -13,6 +13,7 @@ const ControlPanel: React.FC<{
 		<div>
 			<button onClick={startNewSimulation}>Start new simulation</button>
 			<span
+				className="cursor-pointer"
 				onClick={e =>
 					navigator.clipboard.writeText(e.currentTarget.innerText)
 				}
