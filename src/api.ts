@@ -41,6 +41,10 @@ export interface Location {
 	y: number
 }
 
+export function locationToString(location: Location): string {
+	return `${location.x},${location.y}`
+}
+
 export interface Agent {
 	location: Location
 	callsign?: number

@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react"
-import { getEventSource, getStaticMap, World, WorldState } from "../api"
+import {
+	getEventSource,
+	getStaticMap,
+	locationToString,
+	World,
+	WorldState,
+} from "../api"
 import AgentView from "./AgentView"
 import BoxView from "./BoxView"
 import GoalView from "./GoalView"
@@ -32,10 +38,16 @@ const WorldView: React.FC<{ simulation: string }> = ({ simulation }) => {
 	return (
 		<Grid grid={world.grid}>
 			{state.goals.map(g => (
-				<GoalView key={`goal+${g.type}+${g.location}`} goal={g} />
+				<GoalView
+					key={`goal+${g.type}+${locationToString(g.location)}`}
+					goal={g}
+				/>
 			))}
 			{state.boxes.map(b => (
-				<BoxView key={`box+${b.type}+${b.location}`} box={b} />
+				<BoxView
+					key={`box+${b.type}+${locationToString(b.location)}`}
+					box={b}
+				/>
 			))}
 			{state.agents.map(a => (
 				<AgentView key={`agent+${a.callsign}`} agent={a} />
