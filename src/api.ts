@@ -15,10 +15,19 @@ export async function getStaticMap(id: string): Promise<World> {
 	}
 }
 
-export async function startSimulation(): Promise<string> {
-	return await fetch(`${url}/simulation/create`, {
+export function startSimulation(level: string): Promise<string> {
+	return fetch(`${url}/simulation/create`, {
 		method: "POST",
-	}).then(r => r.text())
+		body: JSON.stringify({
+			level,
+		}),
+	}).then(async r => {
+		if (r.ok) {
+			return r.text()
+		} else {
+			throw new Error(await r.text())
+		}
+	})
 }
 
 export interface Location {

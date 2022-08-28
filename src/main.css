@@ -22,12 +22,12 @@
 	}
 
 	.agent {
-		@apply center m-1 rounded-full bg-green-700;
+		@apply center rounded-full bg-green-700;
 		@apply text-lg font-bold text-white;
 	}
 
 	.box {
-		@apply center m-2 rounded;
+		@apply center rounded;
 		@apply bg-blue-700;
 	}
 
