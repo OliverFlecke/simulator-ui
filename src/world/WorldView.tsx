@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import {
 	getEventSource,
-	getStaticMap,
+	getStaticLevel,
 	locationToString,
 	World,
 	WorldState,
@@ -16,7 +16,7 @@ const WorldView: React.FC<{ simulation: string }> = ({ simulation }) => {
 	const [state, setState] = useState<WorldState | null>(null)
 
 	useEffect(() => {
-		getStaticMap(simulation).then(w => {
+		getStaticLevel(simulation).then(w => {
 			setWorld(w)
 			setState(w.state)
 

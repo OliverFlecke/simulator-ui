@@ -4,8 +4,8 @@ export function getEventSource(id: string): EventSource {
 	return new EventSource(`${url}/simulation/${id}/stream`)
 }
 
-export async function getStaticMap(id: string): Promise<World> {
-	const parts = await fetch(`${url}/simulation/${id}/map`)
+export async function getStaticLevel(id: string): Promise<World> {
+	const parts = await fetch(`${url}/simulation/${id}/level`)
 		.then(x => x.text())
 		.then(level => level.split("\n\n"))
 
