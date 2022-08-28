@@ -30,6 +30,12 @@ export function startSimulation(level: string): Promise<string> {
 	})
 }
 
+export function getLevels(): Promise<string[]> {
+	return fetch(`${url}/level`)
+		.then(x => x.text())
+		.then(x => x.split("\n"))
+}
+
 export interface Location {
 	x: number
 	y: number
