@@ -6,7 +6,7 @@ export const Grid: FC<{ grid: string; children?: React.ReactNode }> = ({
 	children,
 }) => {
 	const rows = grid.split("\n")
-	const l = rows[0].length
+	const l = rows.reduce((max, current) => Math.max(max, current.length), 0)
 
 	return (
 		<div className="relative h-full">
@@ -14,7 +14,14 @@ export const Grid: FC<{ grid: string; children?: React.ReactNode }> = ({
 				{rows.flatMap((row, y) =>
 					row
 						.split("")
-						.map((c, x) => <Cell key={`${x},${y}`} type={c} />)
+						.map((c, x) => (
+							<Cell
+								key={`${x},${y}`}
+								type={c}
+								x={x + 1}
+								y={y + 1}
+							/>
+						))
 				)}
 			</InternalGrid>
 			<InternalGrid columns={l} rows={rows.length}>
@@ -31,7 +38,7 @@ const InternalGrid: FC<{
 }> = ({ children, columns, rows }) => {
 	return (
 		<div
-			className="absolute grid h-full w-full gap-1"
+			className="world-grid"
 			style={{
 				gridTemplateColumns: `repeat(${columns}, 1fr)`,
 				gridTemplateRows: `repeat(${rows}, 1fr)`,

@@ -2,13 +2,20 @@ import React, { FC } from "react"
 
 const Cell: FC<{
 	type: string
-}> = ({ type }) => {
+	x: number
+	y: number
+}> = ({ type, x, y }) => {
+	const style = {
+		gridColumn: x,
+		gridRow: y,
+	}
+
 	switch (type) {
 		case "#":
-			return <div className="cell wall"></div>
+			return <div style={style} className="cell wall"></div>
 
 		default:
-			return <div className="cell"></div>
+			return <div style={style} className="cell"></div>
 	}
 }
 

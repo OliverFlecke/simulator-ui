@@ -13,8 +13,16 @@
 		@apply m-2 rounded bg-lime-900 p-2 px-4;
 	}
 
+	.world-grid {
+		@apply absolute grid h-full w-screen gap-1;
+	}
+
+	.world-grid div {
+		aspect-ratio: 1;
+	}
+
 	.cell {
-		@apply h-full w-full text-center;
+		@apply h-full min-h-full w-full min-w-full text-center;
 	}
 
 	.wall {
@@ -22,16 +30,19 @@
 	}
 
 	.agent {
+		@apply cell;
 		@apply center rounded-full bg-green-700;
 		@apply text-lg font-bold text-white;
 	}
 
 	.box {
+		@apply cell;
 		@apply center rounded;
 		@apply bg-blue-700;
 	}
 
 	.goal {
+		@apply cell;
 		@apply center bg-red-700 uppercase;
 	}
 }
