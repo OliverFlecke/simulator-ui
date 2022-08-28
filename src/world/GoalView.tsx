@@ -1,4 +1,4 @@
-import { FC } from "react"
+import React, { FC } from "react"
 import { Goal } from "../api"
 
 const GoalView: FC<{ goal: Goal }> = ({ goal }) => {
@@ -10,7 +10,7 @@ const GoalView: FC<{ goal: Goal }> = ({ goal }) => {
 				gridRow: goal.location.y + 1,
 			}}
 		>
-			{goal.type ?? "0"}
+			{String.fromCharCode((goal.type ?? 0) + 65)}
 		</div>
 	)
 }
